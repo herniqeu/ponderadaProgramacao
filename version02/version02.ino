@@ -1,4 +1,6 @@
-String groupMembers[6] = {"Rafael", "Fabio", "Godoy", "Giuliano", "Yuri", "Marcelo"};
+// C++ code
+String groupMembers[7] = {"Rafael", "Fabio", "Godoy", "Giuliano", "Yuri", "Marcelo", "Jose"};
+//verifica se o nome colocado no primeiro input faz parte da lista de membros do grupo 
 boolean verifyMember(String name){
   boolean isInGroupMembers = false;
   for(int i = 0; i < sizeof(groupMembers); i++){
@@ -9,7 +11,7 @@ boolean verifyMember(String name){
 
   return isInGroupMembers;
 }
-
+// void setup é um método utilizado para configurar a placa antes de iniciar o void loop
 void setup() {
   Serial.begin(9600);
 }
@@ -30,9 +32,14 @@ void loop() {
   Serial.println("\nAgora eu preciso de um valor float, então me fale sua altura em metros\n(utilizando um ponto para representar o início das casas decimais): ");
   while (Serial.available() == 0) {
   }
-
   float userInputHeight = Serial.parseFloat();
-  Serial.println("\nOlá " + userInputName + ", você tem " + String(userInputHeight) + " de altura!");
+   
+  Serial.println("\n Preciso de mais um valor float, então me fale sua idade: ");
+  while (Serial.available() == 0) {
+  }
+  int userInputAge = Serial.parseInt();
+  
+  Serial.println("\nOlá " + userInputName + ", você tem " + String(userInputHeight) + " de altura e "+ String(userInputAge) + " anos!");
   
   Serial.println("\nVocê torce para algum time do futebol brasileiro?\nResponda sim ou não: ");
   
