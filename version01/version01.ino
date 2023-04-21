@@ -8,7 +8,7 @@ String getUserStringInput() {
   return userInput;
 }
 
-String groupMembers[6] = {"rafael", "Fabio", "Godoi", "Giuliano", "Yuri", "Marcelo"};
+String groupMembers[6] = {"Rafael", "Fabio", "Godoy", "Giuliano", "Yuri", "Marcelo"};
 boolean verifyMember(String name){
   boolean isInGroupMembers = false;
   for(int i = 0; i < sizeof(groupMembers); i++){
@@ -34,6 +34,7 @@ void printAndWait(String text){
 
 int state = 0;
 String userName;
+
 void loop() {
   if(state == 0){
     String userString = getUserStringInput();
