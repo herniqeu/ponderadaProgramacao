@@ -16,7 +16,7 @@ void setup() {
 
 void loop() {
   Serial.println("Escreva o seu nome para saber se você participa do melhor grupo: ");
-//Esse while consegue parar a função void até o serial available receber alguma informação
+//Esse while consegue parar a função loop até o serial available receber alguma informação
   while (Serial.available() == 0) {
   }
 
@@ -26,15 +26,35 @@ void loop() {
   } else {
     Serial.println("\nVocê não faz parte do Grupo :(");
   }
-
-  Serial.println(Serial.available());
   
-  Serial.println("Agora eu preciso de um valor float, então me fale sua altura em metros: ");
+  Serial.println("\nAgora eu preciso de um valor float, então me fale sua altura em metros\n(utilizando um ponto para representar o início das casas decimais): ");
   while (Serial.available() == 0) {
   }
 
-  float userInputHigh = Serial.parseFloat();
-  Serial.println("\nOlá " + userInputName + ", você tem " + String(userInputHigh) + " de altura!");
-
-  Serial.println(Serial.available());
+  float userInputHeight = Serial.parseFloat();
+  Serial.println("\nOlá " + userInputName + ", você tem " + String(userInputHeight) + " de altura!");
+  
+  Serial.println("\nVocê torce para algum time do futebol brasileiro?\nResponda sim ou não: ");
+  
+  while (Serial.available() == 0) {
+  }
+  
+  String supportsTeam = Serial.readStringUntil('\n');
+  if (supportsTeam == "sim"){
+    Serial.println("Pra qual time você torce?");
+  	while (Serial.available() == 0) {
+  	}
+  	String favoriteTeam = Serial.readStringUntil('\n');
+    if (favoriteTeam == "Palmeiras" || favoriteTeam == "palmeiras"){
+      Serial.println("Parabéns campeão! Avanti Palestra!");
+    }
+    else{
+      Serial.println("Sinto muito, mas você é pato do Palmeiras");
+    }
+  }else{
+    Serial.println("Entendido," + userInputName + "não torce para nenhum time do Brasil");
+  }
+  delay(1000);
+  Serial.println("\n\nRecomeçando o sistema...");
+  delay(1000);
 }
