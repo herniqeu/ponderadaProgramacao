@@ -1,4 +1,8 @@
+// DECLARAÇÃO DE VARIÁVEIS E FUNÇÕES
+
 String groupMembers[7] = {"Rafael", "Fabio", "Godoy", "Giuliano", "Yuri", "Marcelo", "Jose"};
+
+// função que verifica se o membro está presente na lista 
 boolean verifyMember(String name){
   boolean isInGroupMembers = false;
   for(int i = 0; i < sizeof(groupMembers); i++){
@@ -10,16 +14,20 @@ boolean verifyMember(String name){
   return isInGroupMembers;
 }
 
+// void setup é um método utilizado para configurar a placa antes de iniciar o void loop
 void setup() {
   Serial.begin(9600);
 }
 
+// void loop é um método que irá executar o código dentro dele repetidamente
 void loop() {
   Serial.println("Escreva o seu nome para saber se você participa do melhor grupo: ");
-//Esse while consegue parar a função loop até o serial available receber alguma informação
+  
+  //Esse while consegue parar a função loop até o serial available receber alguma informação
   while (Serial.available() == 0) {
   }
-
+	
+  // O seguinte pedaço de código lê uma string do serial e retorna uma mensagem para cada caso 
   String userInputName = Serial.readStringUntil('\n');
   if (verifyMember(userInputName)) {
     Serial.println("\n" + userInputName + ", Você faz parte do grupo!\nSeja bem vindo senhor.");
@@ -54,6 +62,20 @@ void loop() {
   }else{
     Serial.println("Entendido," + userInputName + "não torce para nenhum time do Brasil");
   }
+  
+  Serial.println("\nEm qual faculdade você estuda/trabalha? ");
+  
+  while (Serial.available() == 0) {
+  }
+  
+  String userCollegeName = Serial.readStringUntil('\n');
+  if (userCollegeName == "inteli") {
+    Serial.println("\n" + userCollegeName + ", " + userInputName + "! A melhor faculdade de tecnologia do Brasil!\nParabéns, inteler.");
+  } else {
+    Serial.println("\n" + userCollegeName + ", " + userInputName + "? Sério? Sinto muito!");
+  }
+  
+ 
   delay(1000);
   Serial.println("\n\nRecomeçando o sistema...");
   delay(1000);
