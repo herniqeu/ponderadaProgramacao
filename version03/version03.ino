@@ -1,4 +1,5 @@
-boolean verifyMember(String name, String groupMembers[]){
+String groupMembers[7] = {"Rafael", "Fabio", "Godoy", "Giuliano", "Yuri", "Marcelo", "Jose"};
+boolean verifyMember(String name){
   boolean isInGroupMembers = false;
   for(int i = 0; i < sizeof(groupMembers); i++){
     if(groupMembers[i] == name){
@@ -14,14 +15,13 @@ void setup() {
 }
 
 void loop() {
-  String groupMembers[7] = {"Rafael", "Fabio", "Godoy", "Giuliano", "Yuri", "Marcelo", "Jose"};
   Serial.println("Escreva o seu nome para saber se você participa do melhor grupo: ");
 //Esse while consegue parar a função loop até o serial available receber alguma informação
   while (Serial.available() == 0) {
   }
 
   String userInputName = Serial.readStringUntil('\n');
-  if (verifyMember(userInputName, groupMembers)) {
+  if (verifyMember(userInputName)) {
     Serial.println("\n" + userInputName + ", Você faz parte do grupo!\nSeja bem vindo senhor.");
   } else {
     Serial.println("\n" + userInputName + ", Você não faz parte do Grupo :(");
